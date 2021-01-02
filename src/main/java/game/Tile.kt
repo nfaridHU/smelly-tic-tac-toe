@@ -7,13 +7,9 @@ class Tile(val x: Int, private val y: Int) {
 
     val isMarked get() = symbol.isNotBlank
 
-    fun isAt(x: Int, y: Int): Boolean {
-        return this.x == x && this.y == y
-    }
+    fun isAt(x: Int, y: Int) = this.x == x && this.y == y
 
-    fun hasSameSymbolAs(other: Tile): Boolean {
-        return symbol == other.symbol
-    }
+    fun hasSameSymbolAs(other: Tile) = symbol == other.symbol
 
     fun mark(symbol: Symbol) {
         this.symbol = symbol
