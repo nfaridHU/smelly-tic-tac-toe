@@ -1,7 +1,6 @@
 package game;
 
-public class Tile
-{
+public class Tile {
     private final int x;
     private final int y;
     private Symbol symbol = Symbol.EMPTY;

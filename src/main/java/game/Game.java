@@ -2,8 +2,8 @@ package game;
 
 public class Game {
 
-    private Symbol lastSymbol = Symbol.EMPTY;
     private final Board board = new Board();
+    private Symbol lastSymbol = Symbol.EMPTY;
 
     public void play(char symbolChar, int x, int y) throws Exception {
         play(Symbol.from(symbolChar), x, y);

@@ -7,7 +7,7 @@ public enum Symbol {
     O('O'),
     X('X');
 
-    private char character;
+    private final char character;
 
     Symbol(char character) {
         this.character = character;
