@@ -3,7 +3,7 @@ package game;
 public class Tile {
     private final int x;
     private final int y;
-    private Symbol symbol = Symbol.EMPTY;
+    private Symbol symbol = Symbol.BLANK;
 
     public Tile(int x, int y) {
         this.x = x;
@@ -15,7 +15,7 @@ public class Tile {
     }
 
     boolean isMarked() {
-        return symbol.isNotEmpty();
+        return symbol.isNotBlank();
     }
 
     boolean hasSameSymbolAs(Tile other) {

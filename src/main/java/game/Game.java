@@ -3,7 +3,7 @@ package game;
 public class Game {
 
     private final Board board = new Board();
-    private Symbol lastSymbol = Symbol.EMPTY;
+    private Symbol lastSymbol = Symbol.BLANK;
 
     public void play(char symbolChar, int x, int y) throws Exception {
         play(Symbol.from(symbolChar), x, y);
@@ -19,7 +19,7 @@ public class Game {
     }
 
     private void validateFirstPlayer(Symbol newSymbol) throws Exception {
-        if (lastSymbol.isEmpty() && newSymbol.isO()) {
+        if (lastSymbol.isBlank() && newSymbol.isO()) {
             throw new InvalidFirstPlayerException();
         }
     }
@@ -40,7 +40,7 @@ public class Game {
         if (board.hasWinnerInRow(0)) return board.symbolAt(0, 0).character();
         if (board.hasWinnerInRow(1)) return board.symbolAt(1, 0).character();
         if (board.hasWinnerInRow(2)) return board.symbolAt(2, 0).character();
-        return Symbol.EMPTY.character();
+        return Symbol.BLANK.character();
     }
 
 }

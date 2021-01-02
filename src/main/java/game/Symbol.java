@@ -3,7 +3,7 @@ package game;
 import java.util.Arrays;
 
 public enum Symbol {
-    EMPTY(' '),
+    BLANK(' '),
     O('O'),
     X('X');
 
@@ -14,15 +14,15 @@ public enum Symbol {
     }
 
     public static Symbol from(char c) {
-        return Arrays.stream(values()).filter(s -> s.character == c).findFirst().orElse(EMPTY);
+        return Arrays.stream(values()).filter(s -> s.character == c).findFirst().orElse(BLANK);
     }
 
-    boolean isEmpty() {
-        return this == EMPTY;
+    boolean isBlank() {
+        return this == BLANK;
     }
 
-    boolean isNotEmpty() {
-        return !isEmpty();
+    boolean isNotBlank() {
+        return !isBlank();
     }
 
     boolean isO() {
