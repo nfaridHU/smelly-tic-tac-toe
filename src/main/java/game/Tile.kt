@@ -1,32 +1,21 @@
-package game;
+package game
 
-public class Tile {
-    private final int x;
-    private final int y;
-    private Symbol symbol = Symbol.BLANK;
+class Tile(private val x: Int, private val y: Int) {
 
-    public Tile(int x, int y) {
-        this.x = x;
-        this.y = y;
+    var symbol = Symbol.BLANK
+        private set
+
+    val isMarked get() = symbol.isNotBlank
+
+    fun isAt(x: Int, y: Int): Boolean {
+        return this.x == x && this.y == y
     }
 
-    boolean isAt(int x, int y) {
-        return this.x == x && this.y == y;
+    fun hasSameSymbolAs(other: Tile?): Boolean {
+        return symbol == other?.symbol
     }
 
-    boolean isMarked() {
-        return symbol.isNotBlank();
-    }
-
-    boolean hasSameSymbolAs(Tile other) {
-        return symbol == other.symbol;
-    }
-
-    void mark(Symbol symbol) {
-        this.symbol = symbol;
-    }
-
-    public Symbol symbol() {
-        return symbol;
+    fun mark(symbol: Symbol) {
+        this.symbol = symbol
     }
 }

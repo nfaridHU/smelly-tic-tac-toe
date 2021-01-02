@@ -41,6 +41,6 @@ class Board {
     }
 
     fun symbolAt(x: Int, y: Int): Symbol? {
-        return tileAt(x, y)?.symbol()
+        return tileAt(x, y)?.symbol
     }
 }
