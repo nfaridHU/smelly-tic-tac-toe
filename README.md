@@ -1,5 +1,7 @@
 # Code Smells Kata
 
+**Note:** The original smelly code is in `main`. The rest of the branches are different solutions.
+
 **Smelly Tic Tac Toe**
 
 We created a very smelly implementation of TicTacToe. There are quite a few code smells in the implementation: 
