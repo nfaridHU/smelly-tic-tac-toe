@@ -2,8 +2,6 @@
 
 **Smelly Tic Tac Toe**
 
-https://github.com/racingDeveloper/tell-dont-ask-kata/
-
 We created a very smelly implementation of TicTacToe. There are quite a few code smells in the implementation: 
 
 * Primitive obsession
