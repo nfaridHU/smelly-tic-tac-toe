@@ -9,7 +9,6 @@ public class Game {
         play(Symbol.from(symbolChar), x, y);
     }
 
-    // TODO: replace x, y with Postion (or Location) class
     public void play(Symbol symbol, int x, int y) throws Exception {
         validateFirstPlayer(symbol);
         validateNextPlayer(symbol);
