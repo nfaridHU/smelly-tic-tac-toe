@@ -11,10 +11,6 @@ enum class Symbol(val character: Char) {
     val isNotBlank get() = !isBlank
     val isO get() = this == O
 
-    fun character(): Char {
-        return character
-    }
-
     companion object {
         @JvmStatic
         fun from(c: Char): Symbol {
