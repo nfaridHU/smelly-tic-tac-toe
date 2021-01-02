@@ -24,8 +24,8 @@ class Board {
 
     private fun tilesIn(row: Int) = tiles.filter { row == it.x }
 
+    private fun hasAllTilesMarkedIn(row: Int) = tilesIn(row).all { it.isMarked }
+
     private fun hasSameSymbolIn(row: Int) = tileAt(row, 0).hasSameSymbolAs(tileAt(row, 1))
                                             && tileAt(row, 2).hasSameSymbolAs(tileAt(row, 1))
-
-    private fun hasAllTilesMarkedIn(row: Int) = tilesIn(row).all { it.isMarked }
 }
