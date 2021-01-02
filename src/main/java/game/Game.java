@@ -19,9 +19,9 @@ public class Game {
         board.mark(symbol, x, y);
     }
 
-    private void validateMoveLocation(int x, int y) throws Exception {
-        if (board.hasTileMarkedAt(x, y)) {
-            throw new InvalidPositionException();
+    private void validateFirstPlayer(Symbol newSymbol) throws Exception {
+        if (lastSymbol.isEmpty() && newSymbol.isO()) {
+            throw new InvalidFirstPlayerException();
         }
     }
 
@@ -31,9 +31,9 @@ public class Game {
         }
     }
 
-    private void validateFirstPlayer(Symbol newSymbol) throws Exception {
-        if (lastSymbol.isEmpty() && newSymbol.isO()) {
-            throw new InvalidFirstPlayerException();
+    private void validateMoveLocation(int x, int y) throws Exception {
+        if (board.hasTileMarkedAt(x, y)) {
+            throw new InvalidPositionException();
         }
     }
 
