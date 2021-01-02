@@ -12,9 +12,6 @@ enum class Symbol(val character: Char) {
     val isO get() = this == O
 
     companion object {
-        @JvmStatic
-        fun from(c: Char): Symbol {
-            return values().find { c == it.character } ?: BLANK
-        }
+        fun from(c: Char) = values().find { c == it.character } ?: BLANK
     }
 }
