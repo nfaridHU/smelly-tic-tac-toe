@@ -10,27 +10,27 @@ public class Game {
     }
 
     public void play(Symbol symbol, int x, int y) throws Exception {
-        validateFirstPlayer(symbol);
-        validateNextPlayer(symbol);
-        validateMoveLocation(x, y);
+        guardAgainstInvalidFirstPlayer(symbol);
+        guardAgainstRepeatedTurns(symbol);
+        guardAgainstInvalidPosition(x, y);
 
         lastSymbol = symbol;
         board.mark(symbol, x, y);
     }
 
-    private void validateFirstPlayer(Symbol newSymbol) throws InvalidFirstPlayerException {
+    private void guardAgainstInvalidFirstPlayer(Symbol newSymbol) throws InvalidFirstPlayerException {
         if (lastSymbol.isBlank() && newSymbol.isO()) {
             throw new InvalidFirstPlayerException();
         }
     }
 
-    private void validateNextPlayer(Symbol newSymbol) throws RepeatedPlayerException {
+    private void guardAgainstRepeatedTurns(Symbol newSymbol) throws RepeatedPlayerException {
         if (newSymbol == lastSymbol) {
             throw new RepeatedPlayerException();
         }
     }
 
-    private void validateMoveLocation(int x, int y) throws InvalidPositionException {
+    private void guardAgainstInvalidPosition(int x, int y) throws InvalidPositionException {
         if (board.hasTileMarkedAt(x, y)) {
             throw new InvalidPositionException();
         }
