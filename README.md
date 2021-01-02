@@ -1,6 +1,6 @@
 # Code Smells Kata
 
-**Note:** The original smelly code is in `main`. The rest of the branches are different solutions.
+**Note:** The original (smelly) code is in branch `main`. The rest of the branches are different iterations.
 
 **Smelly Tic Tac Toe**
 
