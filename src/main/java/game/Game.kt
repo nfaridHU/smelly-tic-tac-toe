@@ -37,9 +37,9 @@ class Game {
     }
 
     fun winner(): Char? {
-        if (board.hasWinnerIn(row = 0)) return board.symbolAt(0, 0)?.character()
-        if (board.hasWinnerIn(row = 1)) return board.symbolAt(1, 0)?.character()
-        if (board.hasWinnerIn(row = 2)) return board.symbolAt(2, 0)?.character()
-        return Symbol.BLANK.character()
+        if (board.hasWinnerIn(row = 0)) return board.symbolAt(0, 0)?.character
+        if (board.hasWinnerIn(row = 1)) return board.symbolAt(1, 0)?.character
+        if (board.hasWinnerIn(row = 2)) return board.symbolAt(2, 0)?.character
+        return Symbol.BLANK.character
     }
 }
