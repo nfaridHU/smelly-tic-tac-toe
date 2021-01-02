@@ -9,6 +9,7 @@ public class Game {
         play(Symbol.from(symbolChar), x, y);
     }
 
+    // TODO: replace x, y with Postion (or Location) class
     public void play(Symbol symbol, int x, int y) throws Exception {
         validateFirstPlayer(symbol);
         validateNextPlayer(symbol);
@@ -20,19 +21,19 @@ public class Game {
 
     private void validateMoveLocation(int x, int y) throws Exception {
         if (board.hasTileMarkedAt(x, y)) {
-            throw new Exception("Invalid position");
+            throw new Exception(ExceptionMessage.INVALID_POSITION);
         }
     }
 
     private void validateNextPlayer(Symbol symbol) throws Exception {
         if (symbol == lastSymbol) {
-            throw new Exception("Invalid next player");
+            throw new Exception(ExceptionMessage.INVALID_NEXT_PLAYER);
         }
     }
 
     private void validateFirstPlayer(Symbol symbol) throws Exception {
         if (lastSymbol.isEmpty() && symbol == Symbol.O) {
-            throw new Exception("Invalid first player");
+            throw new Exception(ExceptionMessage.INVALID_FIRST_PLAYER);
         }
     }
 
