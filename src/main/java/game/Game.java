@@ -5,8 +5,8 @@ public class Game {
     private final Board board = new Board();
     private Symbol lastSymbol = Symbol.BLANK;
 
-    public void play(char symbolChar, int x, int y) throws Exception {
-        play(Symbol.from(symbolChar), x, y);
+    public void play(char symbol, int x, int y) throws Exception {
+        play(Symbol.from(symbol), x, y);
     }
 
     public void play(Symbol symbol, int x, int y) throws Exception {
