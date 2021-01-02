@@ -7,7 +7,7 @@ public enum Symbol {
     O('O'),
     X('X');
 
-    char character;
+    private char character;
 
     Symbol(char character) {
         this.character = character;
@@ -23,5 +23,13 @@ public enum Symbol {
 
     boolean isNotEmpty() {
         return !isEmpty();
+    }
+
+    boolean isO() {
+        return this == O;
+    }
+
+    public char character() {
+        return character;
     }
 }

@@ -25,23 +25,23 @@ public class Game {
         }
     }
 
-    private void validateNextPlayer(Symbol symbol) throws Exception {
-        if (symbol == lastSymbol) {
+    private void validateNextPlayer(Symbol newSymbol) throws Exception {
+        if (newSymbol == lastSymbol) {
             throw new Exception(ExceptionMessage.INVALID_NEXT_PLAYER);
         }
     }
 
-    private void validateFirstPlayer(Symbol symbol) throws Exception {
-        if (lastSymbol.isEmpty() && symbol == Symbol.O) {
+    private void validateFirstPlayer(Symbol newSymbol) throws Exception {
+        if (lastSymbol.isEmpty() && newSymbol.isO()) {
             throw new Exception(ExceptionMessage.INVALID_FIRST_PLAYER);
         }
     }
 
     public char winner() {
-        if (board.hasWinnerInRow(0)) return board.symbolAt(0, 0).character;
-        if (board.hasWinnerInRow(1)) return board.symbolAt(1, 0).character;
-        if (board.hasWinnerInRow(2)) return board.symbolAt(2, 0).character;
-        return Symbol.EMPTY.character;
+        if (board.hasWinnerInRow(0)) return board.symbolAt(0, 0).character();
+        if (board.hasWinnerInRow(1)) return board.symbolAt(1, 0).character();
+        if (board.hasWinnerInRow(2)) return board.symbolAt(2, 0).character();
+        return Symbol.EMPTY.character();
     }
 
 }
