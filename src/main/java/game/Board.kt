@@ -13,6 +13,10 @@ class Board {
         }
     }
 
+    private fun tilesIn(row: Int): List<Tile> {
+        return tiles.filter { row == it.x }
+    }
+
     fun tileAt(x: Int, y: Int): Tile? {
         return tiles.find { it.isAt(x, y) }
     }
@@ -31,9 +35,7 @@ class Board {
     }
 
     private fun hasAllTilesMarkedIn(row: Int): Boolean {
-        return hasTileMarkedAt(row, 0) &&
-               hasTileMarkedAt(row, 1) &&
-               hasTileMarkedAt(row, 2)
+        return tilesIn(row).all { it.isMarked }
     }
 
     fun hasTileMarkedAt(row: Int, i: Int): Boolean {

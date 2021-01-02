@@ -1,6 +1,6 @@
 package game
 
-class Tile(private val x: Int, private val y: Int) {
+class Tile(val x: Int, private val y: Int) {
 
     var symbol = Symbol.BLANK
         private set
