@@ -11,8 +11,8 @@ class Tile(val x: Int, private val y: Int) {
         return this.x == x && this.y == y
     }
 
-    fun hasSameSymbolAs(other: Tile?): Boolean {
-        return symbol == other?.symbol
+    fun hasSameSymbolAs(other: Tile): Boolean {
+        return symbol == other.symbol
     }
 
     fun mark(symbol: Symbol) {
