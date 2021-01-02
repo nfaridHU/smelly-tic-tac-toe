@@ -11,7 +11,5 @@ class Tile(val x: Int, private val y: Int) {
 
     fun hasSameSymbolAs(other: Tile) = symbol == other.symbol
 
-    fun mark(symbol: Symbol) {
-        this.symbol = symbol
-    }
+    fun mark(symbol: Symbol) { this.symbol = symbol }
 }
