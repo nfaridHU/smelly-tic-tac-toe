@@ -18,19 +18,19 @@ public class Game {
         board.mark(symbol, x, y);
     }
 
-    private void validateFirstPlayer(Symbol newSymbol) throws Exception {
+    private void validateFirstPlayer(Symbol newSymbol) throws InvalidFirstPlayerException {
         if (lastSymbol.isBlank() && newSymbol.isO()) {
             throw new InvalidFirstPlayerException();
         }
     }
 
-    private void validateNextPlayer(Symbol newSymbol) throws Exception {
+    private void validateNextPlayer(Symbol newSymbol) throws RepeatedPlayerException {
         if (newSymbol == lastSymbol) {
             throw new RepeatedPlayerException();
         }
     }
 
-    private void validateMoveLocation(int x, int y) throws Exception {
+    private void validateMoveLocation(int x, int y) throws InvalidPositionException {
         if (board.hasTileMarkedAt(x, y)) {
             throw new InvalidPositionException();
         }
