@@ -21,19 +21,19 @@ public class Game {
 
     private void validateMoveLocation(int x, int y) throws Exception {
         if (board.hasTileMarkedAt(x, y)) {
-            throw new Exception(ExceptionMessage.INVALID_POSITION);
+            throw new InvalidPositionException();
         }
     }
 
     private void validateNextPlayer(Symbol newSymbol) throws Exception {
         if (newSymbol == lastSymbol) {
-            throw new Exception(ExceptionMessage.INVALID_NEXT_PLAYER);
+            throw new RepeatedPlayerException();
         }
     }
 
     private void validateFirstPlayer(Symbol newSymbol) throws Exception {
         if (lastSymbol.isEmpty() && newSymbol.isO()) {
-            throw new Exception(ExceptionMessage.INVALID_FIRST_PLAYER);
+            throw new InvalidFirstPlayerException();
         }
     }
 
