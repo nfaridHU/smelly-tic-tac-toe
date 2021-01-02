@@ -10,36 +10,22 @@ class Board {
                 tiles.add(Tile(i, j))
     }
 
-    fun tileAt(x: Int, y: Int): Tile {
-        return tiles.find { it.isAt(x, y) }!!
-    }
+    fun tileAt(x: Int, y: Int) = tiles.find { it.isAt(x, y) }!!
+
+    fun hasWinnerIn(row: Int) = hasAllTilesMarkedIn(row) && hasSameSymbolIn(row)
+
+    fun hasTileMarkedAt(row: Int, i: Int) = tileAt(row, i).isMarked
+
+    fun symbolAt(x: Int, y: Int) = tileAt(x, y).symbol
 
     fun mark(symbol: Symbol, x: Int, y: Int) {
         tileAt(x, y).mark(symbol)
     }
 
-    fun hasWinnerIn(row: Int): Boolean {
-        return hasAllTilesMarkedIn(row) && hasSameSymbolIn(row)
-    }
+    private fun tilesIn(row: Int) = tiles.filter { row == it.x }
 
-    private fun tilesIn(row: Int): List<Tile> {
-        return tiles.filter { row == it.x }
-    }
+    private fun hasSameSymbolIn(row: Int) = tileAt(row, 0).hasSameSymbolAs(tileAt(row, 1))
+                                            && tileAt(row, 2).hasSameSymbolAs(tileAt(row, 1))
 
-    private fun hasSameSymbolIn(row: Int): Boolean {
-        return tileAt(row, 0).hasSameSymbolAs(tileAt(row, 1))
-               && tileAt(row, 2).hasSameSymbolAs(tileAt(row, 1))
-    }
-
-    private fun hasAllTilesMarkedIn(row: Int): Boolean {
-        return tilesIn(row).all { it.isMarked }
-    }
-
-    fun hasTileMarkedAt(row: Int, i: Int): Boolean {
-        return tileAt(row, i).isMarked
-    }
-
-    fun symbolAt(x: Int, y: Int): Symbol {
-        return tileAt(x, y).symbol
-    }
+    private fun hasAllTilesMarkedIn(row: Int) = tilesIn(row).all { it.isMarked }
 }
