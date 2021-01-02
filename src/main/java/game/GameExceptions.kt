@@ -1,19 +1,7 @@
-package game;
+package game
 
-class InvalidPositionException extends Exception {
-    public InvalidPositionException() {
-        super("Invalid position");
-    }
-}
+import java.lang.Exception
 
-class RepeatedPlayerException extends Exception {
-    public RepeatedPlayerException() {
-        super("Invalid next player");
-    }
-}
-
-class InvalidFirstPlayerException extends Exception {
-    public InvalidFirstPlayerException() {
-        super("Invalid first player");
-    }
-}
+class InvalidPositionException : Exception("Invalid position")
+class RepeatedPlayerException : Exception("Invalid next player")
+class InvalidFirstPlayerException : Exception("Invalid first player")
