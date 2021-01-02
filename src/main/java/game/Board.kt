@@ -1,10 +1,17 @@
 package game
 
-import java.util.ArrayList
-
 class Board {
 
     private val tiles = mutableListOf<Tile>()
+
+    init {
+        for (i in 0..2) {
+            for (j in 0..2) {
+                val tile = Tile(i, j)
+                tiles.add(tile)
+            }
+        }
+    }
 
     fun tileAt(x: Int, y: Int): Tile? {
         return tiles.find { it.isAt(x, y) }
@@ -19,8 +26,8 @@ class Board {
     }
 
     private fun hasSameSymbolIn(row: Int): Boolean {
-        return (tileAt(row, 0)!!.hasSameSymbolAs(tileAt(row, 1))
-                && tileAt(row, 2)!!.hasSameSymbolAs(tileAt(row, 1)))
+        return tileAt(row, 0)!!.hasSameSymbolAs(tileAt(row, 1))
+               && tileAt(row, 2)!!.hasSameSymbolAs(tileAt(row, 1))
     }
 
     private fun hasAllTilesMarkedIn(row: Int): Boolean {
@@ -30,19 +37,10 @@ class Board {
     }
 
     fun hasTileMarkedAt(row: Int, i: Int): Boolean {
-        return tileAt(row, i)!!.isMarked
+        return tileAt(row, i)?.isMarked ?: false
     }
 
-    fun symbolAt(x: Int, y: Int): Symbol {
-        return tileAt(x, y)!!.symbol()
-    }
-
-    init {
-        for (i in 0..2) {
-            for (j in 0..2) {
-                val tile = Tile(i, j)
-                tiles.add(tile)
-            }
-        }
+    fun symbolAt(x: Int, y: Int): Symbol? {
+        return tileAt(x, y)?.symbol()
     }
 }
