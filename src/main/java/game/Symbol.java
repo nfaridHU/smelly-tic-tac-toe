@@ -20,4 +20,8 @@ public enum Symbol {
     boolean isEmpty() {
         return this == EMPTY;
     }
+
+    boolean isNotEmpty() {
+        return !isEmpty();
+    }
 }

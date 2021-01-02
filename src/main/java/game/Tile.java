@@ -16,7 +16,7 @@ public class Tile
     }
 
     boolean isMarked() {
-        return symbol != Symbol.EMPTY;
+        return symbol.isNotEmpty();
     }
 
     boolean hasSameSymbolAs(Tile other) {
