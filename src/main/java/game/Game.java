@@ -1,71 +1,47 @@
 package game;
 
 public class Game {
-    private char _lastSymbol = ' ';
-    private Board _board = new Board();
 
-    public void Play(char symbol, int x, int y) throws Exception {
-        //if first move
-        if (_lastSymbol == ' ') {
-            //if player is X
-            if (symbol == 'O') {
-                throw new Exception("Invalid first player");
-            }
-        }
-        //if not first move but player repeated
-        else if (symbol == _lastSymbol) {
-            throw new Exception("Invalid next player");
-        }
-        //if not first move but play on an already played tile
-        else if (_board.TileAt(x, y).Symbol != ' ') {
+    private Symbol lastSymbol = Symbol.EMPTY;
+    private final Board board = new Board();
+
+    public void play(char symbolChar, int x, int y) throws Exception {
+        play(Symbol.from(symbolChar), x, y);
+    }
+
+    public void play(Symbol symbol, int x, int y) throws Exception {
+        validateFirstPlayer(symbol);
+        validateNextPlayer(symbol);
+        validateMoveLocation(x, y);
+
+        lastSymbol = symbol;
+        board.mark(symbol, x, y);
+    }
+
+    private void validateMoveLocation(int x, int y) throws Exception {
+        if (board.hasTileMarkedAt(x, y)) {
             throw new Exception("Invalid position");
         }
-
-        // update game state
-        _lastSymbol = symbol;
-        _board.AddTileAt(symbol, x, y);
     }
 
-    public char Winner() {
-        //if the positions in first row are taken
-        if (_board.TileAt(0, 0).Symbol != ' ' &&
-                _board.TileAt(0, 1).Symbol != ' ' &&
-                _board.TileAt(0, 2).Symbol != ' ') {
-            //if first row is full with same symbol
-            if (_board.TileAt(0, 0).Symbol ==
-                    _board.TileAt(0, 1).Symbol &&
-                    _board.TileAt(0, 2).Symbol == _board.TileAt(0, 1).Symbol) {
-                return _board.TileAt(0, 0).Symbol;
-            }
+    private void validateNextPlayer(Symbol symbol) throws Exception {
+        if (symbol == lastSymbol) {
+            throw new Exception("Invalid next player");
         }
-
-        //if the positions in first row are taken
-        if (_board.TileAt(1, 0).Symbol != ' ' &&
-                _board.TileAt(1, 1).Symbol != ' ' &&
-                _board.TileAt(1, 2).Symbol != ' ') {
-            //if middle row is full with same symbol
-            if (_board.TileAt(1, 0).Symbol ==
-                    _board.TileAt(1, 1).Symbol &&
-                    _board.TileAt(1, 2).Symbol ==
-                            _board.TileAt(1, 1).Symbol) {
-                return _board.TileAt(1, 0).Symbol;
-            }
-        }
-
-        //if the positions in first row are taken
-        if (_board.TileAt(2, 0).Symbol != ' ' &&
-                _board.TileAt(2, 1).Symbol != ' ' &&
-                _board.TileAt(2, 2).Symbol != ' ') {
-            //if middle row is full with same symbol
-            if (_board.TileAt(2, 0).Symbol ==
-                    _board.TileAt(2, 1).Symbol &&
-                    _board.TileAt(2, 2).Symbol ==
-                            _board.TileAt(2, 1).Symbol) {
-                return _board.TileAt(2, 0).Symbol;
-            }
-        }
-
-        return ' ';
     }
+
+    private void validateFirstPlayer(Symbol symbol) throws Exception {
+        if (lastSymbol.isEmpty() && symbol == Symbol.O) {
+            throw new Exception("Invalid first player");
+        }
+    }
+
+    public char winner() {
+        if (board.hasWinnerInRow(0)) return board.symbolAt(0, 0);
+        if (board.hasWinnerInRow(1)) return board.symbolAt(1, 0);
+        if (board.hasWinnerInRow(2)) return board.symbolAt(2, 0);
+        return Symbol.EMPTY.character;
+    }
+
 }
 

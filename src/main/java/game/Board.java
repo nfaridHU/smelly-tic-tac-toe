@@ -3,42 +3,51 @@ package game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Board
-{
-    private List<Tile> _plays = new ArrayList<>();
+public class Board {
+    private List<Tile> tiles = new ArrayList<>();
 
-    public Board()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                Tile tile = new Tile();
-                tile.X = i;
-                tile.Y = j;
-                tile.Symbol = ' ';
-                _plays.add(tile);
+    public Board() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                Tile tile = new Tile(i, j);
+                tiles.add(tile);
             }
         }
     }
 
-    public Tile TileAt(int x, int y)
-    {
-        for (Tile t : _plays) {
-            if (t.X == x && t.Y == y){
-                return t;
+    public Tile tileAt(int x, int y) {
+        for (Tile tile : tiles) {
+            if (tile.isAt(x, y)) {
+                return tile;
             }
         }
         return null;
     }
 
-    public void AddTileAt(char symbol, int x, int y)
-    {
-        Tile newTile = new Tile();
-        newTile.X = x;
-        newTile.Y = y;
-        newTile.Symbol = symbol;
+    public void mark(Symbol symbol, int x, int y) {
+        tileAt(x, y).mark(symbol);
+    }
 
-        TileAt(x,y).Symbol = symbol;
+    boolean hasWinnerInRow(int row) {
+        return hasAllTilesMarkedIn(row) && hasSameSymbolIn(row);
+    }
+
+    private boolean hasSameSymbolIn(int row) {
+        return tileAt(row, 0).hasSameSymbolAs(tileAt(row, 1))
+               && tileAt(row, 2).hasSameSymbolAs(tileAt(row, 1));
+    }
+
+    private boolean hasAllTilesMarkedIn(int row) {
+        return hasTileMarkedAt(row, 0) &&
+               hasTileMarkedAt(row, 1) &&
+               hasTileMarkedAt(row, 2);
+    }
+
+    public boolean hasTileMarkedAt(int row, int i) {
+        return tileAt(row, i).isMarked();
+    }
+
+    char symbolAt(int x, int y) {
+        return tileAt(x, y).symbol.character;
     }
 }
