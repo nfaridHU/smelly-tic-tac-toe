@@ -18,9 +18,7 @@ class Board {
 
     fun symbolAt(x: Int, y: Int) = tileAt(x, y).symbol
 
-    fun mark(symbol: Symbol, x: Int, y: Int) {
-        tileAt(x, y).mark(symbol)
-    }
+    fun mark(symbol: Symbol, x: Int, y: Int) = tileAt(x, y).mark(symbol)
 
     private fun tilesIn(row: Int) = tiles.filter { row == it.x }
 
