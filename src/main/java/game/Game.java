@@ -38,9 +38,9 @@ public class Game {
     }
 
     public char winner() {
-        if (board.hasWinnerInRow(0)) return board.symbolAt(0, 0);
-        if (board.hasWinnerInRow(1)) return board.symbolAt(1, 0);
-        if (board.hasWinnerInRow(2)) return board.symbolAt(2, 0);
+        if (board.hasWinnerInRow(0)) return board.symbolAt(0, 0).character;
+        if (board.hasWinnerInRow(1)) return board.symbolAt(1, 0).character;
+        if (board.hasWinnerInRow(2)) return board.symbolAt(2, 0).character;
         return Symbol.EMPTY.character;
     }
 

@@ -2,9 +2,9 @@ package game;
 
 public class Tile
 {
-    public int x;
-    public int y;
-    public Symbol symbol = Symbol.EMPTY;
+    private final int x;
+    private final int y;
+    private Symbol symbol = Symbol.EMPTY;
 
     public Tile(int x, int y) {
         this.x = x;
@@ -20,10 +20,14 @@ public class Tile
     }
 
     boolean hasSameSymbolAs(Tile other) {
-        return this.symbol == other.symbol;
+        return symbol == other.symbol;
     }
 
     void mark(Symbol symbol) {
         this.symbol = symbol;
+    }
+
+    public Symbol symbol() {
+        return symbol;
     }
 }

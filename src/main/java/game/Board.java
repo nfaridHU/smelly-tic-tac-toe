@@ -47,7 +47,7 @@ public class Board {
         return tileAt(row, i).isMarked();
     }
 
-    char symbolAt(int x, int y) {
-        return tileAt(x, y).symbol.character;
+    Symbol symbolAt(int x, int y) {
+        return tileAt(x, y).symbol();
     }
 }
